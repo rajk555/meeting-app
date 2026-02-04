@@ -58,3 +58,19 @@ npm run build
 ## Deployment
 
 You can deploy the built assets and the backend to your hosting platform of choice (Heroku, DigitalOcean, AWS, etc.). Ensure the `backend/dist` directory and the `frontend/dist` files are served correctly.
+
+## Containerized Setup
+
+To avoid platform compatibility issues and run both services in Linux containers, use Docker Compose:
+
+```bash
+# From the project root
+docker compose up --build
+```
+
+This will build and run:
+
+- **Backend** service on http://localhost:3000
+- **Frontend** service on http://localhost:3001
+
+You don’t need to install Node.js, Prisma, or any language runtimes locally.

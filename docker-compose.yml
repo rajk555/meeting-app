@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: meeting-notes-backend:latest
+    ports:
+      - '3000:3000'
+    environment:
+      # For SQLite, the database file will live inside the container at /app/dev.db
+      DATABASE_URL: 'file:./dev.db'
+    volumes:
+      - ./backend/prisma:/app/prisma
+      - ./backend/dev.db:/app/dev.db
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: meeting-notes-frontend:latest
+    ports:
+      - '3001:3000'
+    depends_on:
+      - backend

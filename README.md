@@ -14,6 +14,10 @@ A full-stack application for creating and managing meeting notes.
 
 ## Getting Started
 
+You can use the local development servers or spin up containers:
+
+### Local Development
+
 ### Backend
 
 ```bash
@@ -29,3 +33,15 @@ cd frontend
 npm install
 npm run dev
 ```
+
+### Containerized Setup
+
+Alternatively, you can run both services in Docker containers without installing Node.js locally:
+
+```bash
+docker compose up --build
+```
+
+- Backend: http://localhost:3000
+- Frontend: http://localhost:3001
+
