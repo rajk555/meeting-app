@@ -5,7 +5,6 @@
 # Wait for Docker daemon to be ready, then run docker compose up
 
 # Paths
-environment:
 $workspace = "$env:USERPROFILE\.openclaw\workspace"
 $dockerExe = "${env:ProgramFiles}\Docker\Docker\resources\bin\docker.exe"
 
