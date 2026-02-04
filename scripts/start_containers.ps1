@@ -8,6 +8,8 @@
 $workspace = "$env:USERPROFILE\.openclaw\workspace"
 $dockerExe = "${env:ProgramFiles}\Docker\Docker\resources\bin\docker.exe"
 
+Write-Output "Switching Docker context to 'default'..."
+& "$dockerExe" context use default 2>$null
 Write-Output "Waiting for Docker daemon to be available..."
 while ($true) {
     try {
