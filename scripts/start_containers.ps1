@@ -1,13 +1,18 @@
 # Auto-start Meeting Notes App containers on user logon
 # Wait for Docker daemon to be ready, then run docker compose up
 
-# Define workspace path
+# Auto-start Meeting Notes App containers on user logon
+# Wait for Docker daemon to be ready, then run docker compose up
+
+# Paths
+environment:
 $workspace = "$env:USERPROFILE\.openclaw\workspace"
+$dockerExe = "${env:ProgramFiles}\Docker\Docker\resources\bin\docker.exe"
 
 Write-Output "Waiting for Docker daemon to be available..."
 while ($true) {
     try {
-        docker info | Out-Null
+        & "$dockerExe" info | Out-Null
         break
     } catch {
         Start-Sleep -Seconds 5
@@ -16,5 +21,5 @@ while ($true) {
 
 Write-Output "Starting Meeting Notes App containers..."
 Push-Location $workspace
-docker compose up --build -d
+& "$dockerExe" compose up --build -d
 Pop-Location
